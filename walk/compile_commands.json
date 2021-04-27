@@ -1,0 +1,17 @@
+[
+ {
+  "directory": "C:/Projects/E2/examples/walk",
+  "arguments": [
+   "clang++",
+   "--target=x86_64-pc-windows-gnu",
+   "-g",
+   "-I./src",
+   "-I../..//src",
+   "-c",
+   "src/main.cc",
+   "-o",
+   "obj/./src/main.cc.o"
+  ],
+  "file": "src/main.cc"
+ }
+]

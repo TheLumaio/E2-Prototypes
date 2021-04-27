@@ -1,0 +1,17 @@
+[
+ {
+  "directory": "C:/Projects/E2/examples/chess",
+  "arguments": [
+   "clang",
+   "--target=x86_64-pc-windows-gnu",
+   "-g",
+   "-I./src",
+   "-I../..//src",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/./src/main.c.o"
+  ],
+  "file": "src/main.c"
+ }
+]

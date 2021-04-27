@@ -1,0 +1,4 @@
+obj/*
+bin/*
+!bin/e2.glsl
+

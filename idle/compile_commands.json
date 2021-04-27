@@ -1,0 +1,17 @@
+[
+ {
+  "directory": "C:/Projects/E2/examples/idle",
+  "arguments": [
+   "clang",
+   "--target=x86_64-pc-windows-gnu",
+   "-I./src",
+   "-I../..//src",
+   "-ggdb",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/./src/main.c.o"
+  ],
+  "file": "src/main.c"
+ }
+]

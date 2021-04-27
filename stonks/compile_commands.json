@@ -1,0 +1,34 @@
+[
+ {
+  "directory": "C:/heck/projects/E2/examples/stonks",
+  "arguments": [
+   "clang",
+   "--target=x86_64-pc-windows-gnu",
+   "-g",
+   "-I./src",
+   "-I../..//src",
+   "-ggdb",
+   "-c",
+   "src/cmc.c",
+   "-o",
+   "obj/./src/cmc.c.o"
+  ],
+  "file": "src/cmc.c"
+ },
+ {
+  "directory": "C:/heck/projects/E2/examples/stonks",
+  "arguments": [
+   "clang",
+   "--target=x86_64-pc-windows-gnu",
+   "-g",
+   "-I./src",
+   "-I../..//src",
+   "-ggdb",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/./src/main.c.o"
+  ],
+  "file": "src/main.c"
+ }
+]
