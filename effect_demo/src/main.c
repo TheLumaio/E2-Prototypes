@@ -48,18 +48,23 @@ void update()
 
 void draw()
 {
+    static const char* cmd = "git rev-parse --short HEAD";
+    static char rev[64] = {0};
+
+    if (strlen(rev) == 0)
+    {
+        FILE* out = popen(cmd, "r");
+        int ch;
+        while ((ch = fgetc(out)) != EOF)
+        {
+            rev[strlen(rev)] = ch;
+        }
+        pclose(out);
+    }
+
     e2_rich_print("this is a {#1}rainbow {#0}effect demo", 1, 1);
+    e2_rich_print(FormatText("Revision hash is {#1}%s", rev), 1, 2);
 
-    static bool n = false;
-    if (IsKeyPressed(KEY_SPACE)) n = !n;
-    if (!n) return;
-
-    static const char* trippy = "\xdctrippy\xdc";
-    static u16 index = 0;
-
-    e2_putc(trippy[index%strlen(trippy)], index%e2_get_width(), index/e2_get_width(), 0x07);
-    e2_effect_set(index%e2_get_width(), index/e2_get_width(), EFFECT_RAINBOW);
-    index = (index+1)%(e2_get_width()*e2_get_height());
 }
 
 

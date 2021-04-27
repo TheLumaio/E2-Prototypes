@@ -1,4 +1,5 @@
 obj/*
 bin/*
 !bin/e2.glsl
-
+compile_commands.json
+.cache/
