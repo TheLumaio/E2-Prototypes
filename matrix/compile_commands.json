@@ -1,6 +1,6 @@
 [
  {
-  "directory": "C:/heck/projects/E2/examples/matrix",
+  "directory": "C:/Projects/E2/E2-Prototypes/matrix",
   "arguments": [
    "clang",
    "--target=x86_64-pc-windows-gnu",
@@ -15,7 +15,7 @@
   "file": "src/main.c"
  },
  {
-  "directory": "C:/heck/projects/E2/examples/matrix",
+  "directory": "C:/Projects/E2/E2-Prototypes/matrix",
   "arguments": [
    "clang",
    "--target=x86_64-pc-windows-gnu",

@@ -1,0 +1,38 @@
+[
+ {
+  "directory": "C:/Projects/E2/E2-Prototypes/syntax",
+  "arguments": [
+   "clang++",
+   "-I./src",
+   "-I../..//src",
+   "-std=c++11",
+   "-ggdb",
+   "-Wno-writable-strings",
+   "-Wno-deprecated",
+   "-Wno-c++11-narrowing",
+   "-c",
+   "src/chip8.c",
+   "-o",
+   "obj/./src/chip8.c.o"
+  ],
+  "file": "src/chip8.c"
+ },
+ {
+  "directory": "C:/Projects/E2/E2-Prototypes/syntax",
+  "arguments": [
+   "clang++",
+   "-I./src",
+   "-I../..//src",
+   "-std=c++11",
+   "-ggdb",
+   "-Wno-writable-strings",
+   "-Wno-deprecated",
+   "-Wno-c++11-narrowing",
+   "-c",
+   "src/main.c",
+   "-o",
+   "obj/./src/main.c.o"
+  ],
+  "file": "src/main.c"
+ }
+]
