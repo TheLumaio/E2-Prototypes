@@ -55,14 +55,14 @@ int main(int argc, char** argv)
         .window_flags = FLAG_WINDOW_RESIZABLE,
         .fps_max = 60,
         .exit_key = KEY_F12,
-        .width = 800,
-        .height = 480,
-        .title = "SUBSTANCE"
+        .width = 1280,
+        .height = 960,
+        .title = "WINDOWS"
     };
 
     bootstrap_e2_t e2 = {
-        .width = window.width/10,
-        .height = window.height/10,
+        .width = window.width/10/2,
+        .height = window.height/10/2,
         .update = update,
         .draw = draw,
 //        .override = override

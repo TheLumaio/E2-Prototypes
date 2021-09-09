@@ -4,7 +4,6 @@
 #include "statelist.h"
 #include <raylib.h>
 
-
 #define alloc(type) malloc(sizeof(type))
 
 static gui_layout_t* _gui;
@@ -245,11 +244,11 @@ static bool make_window = false;
 static window_t* top_window = NULL;
 
 #define X(x) #x
+static u8 d = 7;
+static u8 m = 9;
+static u16 y = 2021;
 void state_login_draw()
 {
-
-    static u8 d = 7, m = 9;
-    static u16 y = 2021;
 
     if (IsKeyPressed(KEY_O) && IsKeyDown(KEY_LEFT_CONTROL))
     {
@@ -260,7 +259,7 @@ void state_login_draw()
             gui_add_child(date_selector, gui_calender(4, 4, &d, &m, &y));
         }
 
-        create_window("Date Selector", date_selector, 2, 2, 30, 35);
+        create_window("Calender Test", date_selector, 2, 2, 30, 35);
     }
 
     if (IsKeyPressed(KEY_S) && IsKeyDown(KEY_LEFT_CONTROL))
@@ -274,7 +273,7 @@ void state_login_draw()
             gui_add_child(add_subs, gui_button("Cancel", 15, 8, 0, 0x48, NULL));
         }
 
-        create_window("Add Substance", add_subs, 2, 2, 25, 12);
+        create_window("Add", add_subs, 2, 2, 25, 12);
     }
 
     if (IsKeyPressed(KEY_H) && IsKeyDown(KEY_LEFT_CONTROL))
@@ -289,7 +288,7 @@ void state_login_draw()
                 "text thing.\n"
                 "{@4a}woooo{#1}ooo o\n"
                 "{#0}{@4c}oo o o {@48}o ooo";
-            
+
             static const char* rain_txt =
                 "{#1}\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\n"
                 "\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\n"
@@ -299,11 +298,36 @@ void state_login_draw()
                 "\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\n"
                 "\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\n"
                 "\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb\xdb";
-            printf("%s\n", test_txt);
             gui_add_child(test_gui, gui_rich_label(rain_txt, 2, 2));
         }
 
         create_window("Rich Text", test_gui, 2, 2, 25, 12);
+    }
+
+    if (IsKeyPressed(KEY_E) && IsKeyDown(KEY_LEFT_CONTROL))
+    {
+        static const char* skull_txt =
+            "{@48}{#1}  _____ \n"
+            " /     \\\n"
+            " |() ()| \n"
+            " \\  ^  / \n"
+            "  ||||| \n"
+            "  ||||| \n"
+            "  ||||| \n";
+        gui_layout_t* skull = gui_create();
+        gui_add_child(skull, gui_rich_label(skull_txt, 2, 2));
+        gui_add_child(skull, gui_rich_label("{@40}shits bitchin'", 12, 2));
+        gui_add_child(skull, gui_button("hella", 20, 6, 0, 0x48, NULL));
+
+        create_window("alert!", skull, 2, 2, 29, 12);
+    }
+
+    if (IsKeyPressed(KEY_M) && IsKeyDown(KEY_LEFT_CONTROL))
+    {
+        gui_layout_t* minesweeper = gui_create();
+        gui_add_child(minesweeper, gui_minesweeper(1, 1, 8, 8));
+
+        create_window("Mines", minesweeper, 2, 2, 10, 12);
     }
 
     if (IsKeyPressed(KEY_Q) && IsKeyDown(KEY_LEFT_CONTROL) && _windows->entries > 0)
@@ -321,14 +345,33 @@ void state_login_draw()
 
     e2_clear(0x5555);
 
-    e2_rich_print(_text, 0, 0, 0x50);
+    e2_rich_print(_text, 0, 0, 0x54);
 
-    for (u8 i = _windows->entries; i > 0; i--)
+    for (i8 i = _windows->entries - 1; i >= 0; i--)
     {
-        window_t* win = _windows->data[i - 1];
+        window_t* win = _windows->data[i];
+
         render_window(win);
-        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && i != 1)
-            continue;
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && i > 0)
+        {
+            e2vec2_t mpos = e2_get_mouse();
+            bool overlapped = false;
+            for (i8 n = i - 1; n >= 0; n--)
+            {
+                if (mpos.x >= win->x &&
+                    mpos.x < win->x + win->w &&
+                    mpos.y >= win->y &&
+                    mpos.y < win->y + win->h)
+                {
+                    overlapped = true;
+                    break;
+                }
+            }
+            if (overlapped)
+            {
+                continue;
+            }
+        }
         gui_update(win->panel);
     }
 }
